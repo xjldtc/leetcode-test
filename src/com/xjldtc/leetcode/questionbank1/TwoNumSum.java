@@ -10,8 +10,9 @@ public class TwoNumSum {
 		for (int i = 0; i < bigNums.length; i++) {
 			bigNums[i] = i;
 		}
+		bigNums = new int[]{3,2,4};
 		System.out.println(System.currentTimeMillis());
-		int[] retrunNums = TwoNumSum.sumNum(bigNums, 195152);
+		int[] retrunNums = TwoNumSum.sumNum(bigNums, 6);
 		System.out.println(retrunNums[0] + "," + retrunNums[1]);
 		System.out.println(System.currentTimeMillis());
 		int[] retrunNums2 = TwoNumSum.hashSumNum(bigNums, 195152);
@@ -32,7 +33,7 @@ public class TwoNumSum {
 			int a = numbers[i];
 			for (int j = numbers.length - 1; j > i - 1; j--) {// 注意考虑数组是0开始，总数是实际数量
 				int b = numbers[j];
-				if (target == (a + b)) {
+				if (target == (a + b)&&i!=j) {
 					retrunNums[0] = i;
 					retrunNums[1] = j;
 					return retrunNums;
@@ -53,6 +54,7 @@ public class TwoNumSum {
 	}
 
 	/**
+	 * 利用hash必须保证值不一样，否则会出问题例如{3，3} 6 会返回不了结果
 	 * 时间复杂度：O(n)， 我们把包含有 n 个元素的列表遍历两次.由于哈希表将查找时间缩短到 O(1),所以时间复杂度为 O(n)
 	 * 空间复杂度：O(n)， 所需的额外空间取决于哈希表中存储的元素数量，该表中存储了 n个元素。
 	 */
